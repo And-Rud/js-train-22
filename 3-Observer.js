@@ -71,12 +71,12 @@ class Store {
   sendNotify(product) {
     this.customers.forEach((item) =>
       item.sendmail(
-        `Новий продукт "${product.name}" в магазині ${this.name}! за допомогою sendEmail.`
+        `Новий продукт "${product.name}" в магазині ${this.name}!`
       )
     );
   }
   // За допомогою forEach перебираємо масив customers
-  // Для кожного елементу масиву викликаємо метод sendEmail з рядком `Новий продукт "${product.name}" в магазині ${this.name}!`
+  // Для кожного елементу масиву викликаємо метод sendEmail з рядком `Новий продукт "${product.name}" в магазині ${this.name}!` за допомогою sendEmail.
 }
 
 console.log("Завдання 3 ====================================");
