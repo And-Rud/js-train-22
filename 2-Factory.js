@@ -8,20 +8,19 @@ class Book {
    * author - автор книги
    * coverColor - колір обкладинки книги
    */
-  /**
-   * Метод describe генерує опис книги
-   *  Повертає рядок у форматі: "Книга: '{назва}', автор: '{автор}', колір обкладинки: '{колір}'"
-   */
   constructor({ title, author, coverColor }) {
     this.title = title;
     this.author = author;
     this.coverColor = coverColor;
   }
-  describe() {
+  /**
+   * Метод describe генерує опис книги
+   *  Повертає рядок у форматі: "Книга: '{назва}', автор: '{автор}', колір обкладинки: '{колір}'"
+   */
+    describe() {
     return `Книга: ${this.title}, автор: ${this.author}, колір обкладинки: ${this.coverColor}`;
   }
 }
-
 /**
  * Клас AudioBook описує аудіокнигу в магазині
  */
@@ -32,30 +31,29 @@ class AudioBook {
    * author - автор книги
    * audioLength - тривалість аудіокниги
    */
-  /**
-     * Метод describe генерує опис аудіокниги
-       Повертає рядок у форматі: "Аудіокнига: '{назва}', автор: '{автор}', тривалість: '{тривалість}'"
-     */
   constructor({ title, author, audioLength }) {
     this.title = title;
     this.author = author;
     this.audioLength = audioLength;
   }
-  describe() {
+  /**
+     * Метод describe генерує опис аудіокниги
+       Повертає рядок у форматі: "Аудіокнига: '{назва}', автор: '{автор}', тривалість: '{тривалість}'"
+     */
+    describe() {
     return `Аудіокнига: ${this.title}, автор: ${this.author}, тривалість: ${this.audioLength}`;
   }
 }
-
 /**
  * Клас ProductFactory використовується для створення об'єктів-продуктів.
  */
-
 class ProductFactory {
   // TYPE - статична властивість, що визначає типи продуктів, які можуть бути створені.
   // {
   //   BOOK: "book",
   //   AUDIOBOOK: "audiobook",
   // }
+  static TYPE = { BOOK: "book", AUDIOBOOK: "audiobook" };
   /**
    * Статичний метод createProduct використовується для створення об'єктів-продуктів, отримує
    * type - тип продукту, що має бути створений. Має бути одним зі значень властивості TYPE.
@@ -65,8 +63,7 @@ class ProductFactory {
    *
    *  Кидає помилку, якщо переданий тип не підтримується `Такого типу продукту не існує: ${type}`.
    */
-  static TYPE = { BOOK: "book", AUDIOBOOK: "audiobook" };
-  static createProduct(type, options) {
+    static createProduct(type, options) {
     if (options.coverColor) {
       return new Book(options);
     }
