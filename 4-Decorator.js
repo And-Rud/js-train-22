@@ -15,22 +15,22 @@ class Drink {
 // Клас HoneyDecorator є декоратором, який додає мед до напою.
 class HoneyDecorator {
   // Конструктор приймає в якості параметрів базовий напій (drink) та кількість меду (amount), яку треба додати.
-  // Getter для name повертає рядок `${this.drink.name} з ${this.amount} г меду`.
-  // Getter для price розраховує загальну вартість напою, враховуючи базову вартість напою
-  // і додаткову вартість меду, яку за замовчуванням встановлюємо на 0.5, і множимо на this.amount.
-  // Метод prepare відповідає за приготування напою з медом.
-  // Він виводить в консоль Приготування ${this.name} з медом
   constructor(drink, amount) {
     this.drink = drink;
     this.amount = amount;
   }
+  // Getter для name повертає рядок `${this.drink.name} з ${this.amount} г меду`.
   get name() {
     return `${this.drink.name} з ${this.amount} г меду`;
   }
+  // Getter для price розраховує загальну вартість напою, враховуючи базову вартість напою
+  // і додаткову вартість меду, яку за замовчуванням встановлюємо на 0.5, і множимо на this.amount.
   get price() {
     const honeyPrice = 0.5;
     return this.drink.price + honeyPrice * this.amount;
   }
+  // Метод prepare відповідає за приготування напою з медом.
+  // Він виводить в консоль Приготування ${this.name} з медом
   prepare() {
     console.log(`Приготування ${this.name} з медом`);
   }
