@@ -5,15 +5,15 @@ class AuthProcessor {
   // setNextProcessor Метод, який приймає наступний обробник (processor) в ланцюгу.
   // Зберігає наступний обробник в поточному об'єкті.
   // Повертає переданий обробник, щоб дозволити подальше ланцюжкове викликання.
-  //validate Метод для перевірки аутентифікації. Приймає ім'я користувача (username) і пароль (passkey).
-  // Перевіряє, чи є наступний обробник в ланцюгу.
-  // Якщо так, передає запит на перевірку аутентифікації наступному обробнику,this.nextProcessor.validate(username, passkey), та повертаємо результат.
-  // Якщо наступного обробника немає, повертає false, сигналізуючи про невдалу аутентифікацію.
   setNextProcessor(processor) {
     this.nextProcessor = processor;
     return processor;
   }
-  validate(username, passkey) {
+  //validate Метод для перевірки аутентифікації. Приймає ім'я користувача (username) і пароль (passkey).
+  // Перевіряє, чи є наступний обробник в ланцюгу.
+  // Якщо так, передає запит на перевірку аутентифікації наступному обробнику,this.nextProcessor.validate(username, passkey), та повертаємо результат.
+  // Якщо наступного обробника немає, повертає false, сигналізуючи про невдалу аутентифікацію.
+    validate(username, passkey) {
     if (this.nextProcessor) {
       this.nextProcessor.validate(username, passkey);
       return this.nextProcessor;
@@ -30,8 +30,7 @@ class TwoStepProcessor extends AuthProcessor {
   // Якщо username дорівнює "john", passkey дорівнює "password" та метод isValidTwoStepCode() повертає true, аутентифікація успішна.
   // Виводить повідомлення про успішну аутентифікацію: Вхід дозволено з двофакторною аутентифікацією, і повертає true.
   // Якщо дані не вірні, запит на аутентифікацію передається наступному обробнику в ланцюгу, super.validate(username, passkey).
-  // isValidTwoStepCode Метод для перевірки двофакторного коду,який повертає true.
-  validate(username, passkey) {
+   validate(username, passkey) {
     if (
       username === "john" &&
       passkey === "password" &&
@@ -43,6 +42,7 @@ class TwoStepProcessor extends AuthProcessor {
       return super.validate(username, passkey);
     }
   }
+  // isValidTwoStepCode Метод для перевірки двофакторного коду,який повертає true.
   isValidTwoStepCode() {
     return true;
   }
@@ -85,17 +85,14 @@ class ProcessorBuilder {
   // Конструктор який не приймає вхідні значення
   //Властивість firstProcessor, що зберігає перший обробник у ланцюгу, за замовчуванням дорівнює null.
   //Властивість lastProcessor, що зберігає останній обробник у ланцюгу, за замовчуванням дорівнює null.
-  // Метод add для додавання нового обробника в ланцюг.
-  // Якщо це перший обробник, він зберігається як перший і останній.
-  // Якщо це не перший обробник, він додається в кінець ланцюга, і стає останнім.
-  // Повертає this.
-  // Метод create для створення ланцюга обробників.
-  // Повертає перший обробник у ланцюгу.
   constructor() {
     this.firstProcessor = null;
     this.lastProcessor = null;
   }
-
+  // Метод add для додавання нового обробника в ланцюг.
+  // Якщо це перший обробник, він зберігається як перший і останній.
+  // Якщо це не перший обробник, він додається в кінець ланцюга, і стає останнім.
+  // Повертає this.
   add(processor) {
     if (!this.firstProcessor) {
       this.firstProcessor = processor;
@@ -106,14 +103,14 @@ class ProcessorBuilder {
     }
     return this;
   }
+  // Метод create для створення ланцюга обробників.
+  // Повертає перший обробник у ланцюгу.
   create() {
     return this.firstProcessor;
   }
 }
 
 console.log("Завдання 6 ====================================");
-// Після виконання розкоментуйте код нижче
-
 // Створюємо Builder для ланцюга обробників.
 const processorBuilder = new ProcessorBuilder();
 
