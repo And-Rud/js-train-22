@@ -3,17 +3,17 @@
 // Клас Participant представляє користувача, який може відправляти повідомлення.
 class Participant {
   // Конструктор приймає два параметри: alias, communicator
-  // Метод dispatchMessage відправляє повідомлення за допомогою відповідного засобу комунікації.
-  // Він приймає один параметр - text - текст повідомлення, яке потрібно відправити.
-  // Метод prepareMessage приймає text та повертає  `[${this.alias}]: ${text}`
   constructor(alias, communicator) {
     this.alias = alias;
     this.communicator = communicator;
   }
+  // Метод dispatchMessage відправляє повідомлення за допомогою відповідного засобу комунікації.
+  // Він приймає один параметр - text - текст повідомлення, яке потрібно відправити.
   dispatchMessage(text) {
     const message = this.prepareMessage(text);
     this.communicator.transmit(message);
   }
+  // Метод prepareMessage приймає text та повертає  `[${this.alias}]: ${text}`
   prepareMessage(text) {
     return `[${this.alias}]: ${text}`;
   }
